@@ -4,13 +4,13 @@ let imgMountain,imgMain,imgEnemy;
 //ctx-HTML5Canvas用
 //currentImgMainX,currentImgMainY-決定主角所在座標
 //imgMountain,imgMain,imgEnemy-障礙物,主角,敵人的圖片物件
-const gridLength=200;
+const gridLength=100;
 //網頁載入完成後初始化動作
 $(function(){
     mapArray=[//0-可走,1-障礙,2-終點,3-敵人
-        [0,1,1],
-        [0,0,0],
-        [3,1,2]
+        [0,1,1,0,0,0,0],
+        [0,0,0,1,0,1,0],
+        [3,1,0,0,0,1,2]
     ];
     ctx=$("#myCanvas")[0].getContext("2d");
     
@@ -81,7 +81,7 @@ $(document).on("keydown",function(event){
                 return;
         }
         //確認目標位置不會超過地圖
-        if(targetImg.x<=400 && targetImg.x>=0 && targetImg.y<=400 && targetImg.y>=0){
+        if(targetImg.x<=600 && targetImg.x>=0 && targetImg.y<=600 && targetImg.y>=0){
             targetBlock.x=targetImg.y/gridLength;
             targetBlock.y=targetImg.x/gridLength;
         }else{
